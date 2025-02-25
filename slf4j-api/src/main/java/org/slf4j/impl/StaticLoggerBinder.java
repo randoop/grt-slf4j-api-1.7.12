@@ -22,9 +22,9 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.impl;
+package org1.slf4j.impl;
 
-import org.slf4j.ILoggerFactory;
+import org1.slf4j.ILoggerFactory;
 
 /**
  * The binding of {@link LoggerFactory} class with an actual instance of

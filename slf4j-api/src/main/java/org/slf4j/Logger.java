@@ -23,17 +23,17 @@
  *
  */
 
-package org.slf4j;
+package org1.slf4j;
 
 /**
- * The org.slf4j.Logger interface is the main user entry point of SLF4J API.
+ * The org1.slf4j.Logger interface is the main user entry point of SLF4J API.
  * It is expected that logging takes place through concrete implementations
  * of this interface.
  * <p/>
  * <h3>Typical usage pattern:</h3>
  * <pre>
- * import org.slf4j.Logger;
- * import org.slf4j.LoggerFactory;
+ * import org1.slf4j.Logger;
+ * import org1.slf4j.LoggerFactory;
  *
  * public class Wombat {
  *

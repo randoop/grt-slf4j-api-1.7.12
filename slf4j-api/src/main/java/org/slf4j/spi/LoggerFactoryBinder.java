@@ -22,12 +22,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.spi;
+package org1.slf4j.spi;
 
-import org.slf4j.ILoggerFactory;
+import org1.slf4j.ILoggerFactory;
 
 /**
- * An internal interface which helps the static {@link org.slf4j.LoggerFactory} 
+ * An internal interface which helps the static {@link org1.slf4j.LoggerFactory} 
  * class bind with the appropriate {@link ILoggerFactory} instance. 
  * 
  * @author Ceki G&uuml;lc&uuml;
@@ -36,10 +36,10 @@ public interface LoggerFactoryBinder {
 
     /**
      * Return the instance of {@link ILoggerFactory} that 
-     * {@link org.slf4j.LoggerFactory} class should bind to.
+     * {@link org1.slf4j.LoggerFactory} class should bind to.
      * 
      * @return the instance of {@link ILoggerFactory} that 
-     * {@link org.slf4j.LoggerFactory} class should bind to.
+     * {@link org1.slf4j.LoggerFactory} class should bind to.
      */
     public ILoggerFactory getLoggerFactory();
 

@@ -22,13 +22,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j;
+package org1.slf4j;
 
 /**
  * Implementations of this interface are used to manufacture {@link Marker}
  * instances.
  * 
- * <p>See the section <a href="http://slf4j.org/faq.html#3">Implementing 
+ * <p>See the section <a href="http://slf4j.org/faq.html#3">Implementing
  * the SLF4J API</a> in the FAQ for details on how to make your logging 
  * system conform to SLF4J.
  * 

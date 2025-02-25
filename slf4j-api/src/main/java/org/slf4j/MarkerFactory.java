@@ -22,11 +22,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j;
+package org1.slf4j;
 
-import org.slf4j.helpers.BasicMarkerFactory;
-import org.slf4j.helpers.Util;
-import org.slf4j.impl.StaticMarkerBinder;
+import org1.slf4j.helpers.BasicMarkerFactory;
+import org1.slf4j.helpers.Util;
+import org1.slf4j.impl.StaticMarkerBinder;
 
 /**
  * MarkerFactory is a utility class producing {@link Marker} instances as

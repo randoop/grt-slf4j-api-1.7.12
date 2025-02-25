@@ -22,12 +22,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.spi;
+package org1.slf4j.spi;
 
-import org.slf4j.IMarkerFactory;
+import org1.slf4j.IMarkerFactory;
 
 /**
- * An internal interface which helps the static {@link org.slf4j.MarkerFactory} 
+ * An internal interface which helps the static {@link org1.slf4j.MarkerFactory} 
  * class bind with the appropriate {@link IMarkerFactory} instance. 
  * 
  * @author Ceki G&uuml;lc&uuml;
@@ -36,10 +36,10 @@ public interface MarkerFactoryBinder {
 
     /**
      * Return the instance of {@link IMarkerFactory} that 
-     * {@link org.slf4j.MarkerFactory} class should bind to.
+     * {@link org1.slf4j.MarkerFactory} class should bind to.
      * 
      * @return the instance of {@link IMarkerFactory} that 
-     * {@link org.slf4j.MarkerFactory} class should bind to.
+     * {@link org1.slf4j.MarkerFactory} class should bind to.
      */
     public IMarkerFactory getMarkerFactory();
 

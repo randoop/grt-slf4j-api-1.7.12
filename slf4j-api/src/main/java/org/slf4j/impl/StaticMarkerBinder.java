@@ -22,12 +22,12 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.impl;
+package org1.slf4j.impl;
 
-import org.slf4j.IMarkerFactory;
-import org.slf4j.MarkerFactory;
-import org.slf4j.helpers.BasicMarkerFactory;
-import org.slf4j.spi.MarkerFactoryBinder;
+import org1.slf4j.IMarkerFactory;
+import org1.slf4j.MarkerFactory;
+import org1.slf4j.helpers.BasicMarkerFactory;
+import org1.slf4j.spi.MarkerFactoryBinder;
 
 /**
  * 

@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j;
+package org1.slf4j;
 
 /**
  * <code>ILoggerFactory</code> instances manufacture {@link Logger}
