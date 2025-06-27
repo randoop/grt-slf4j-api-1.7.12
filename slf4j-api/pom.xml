@@ -87,15 +87,10 @@
           </execution>
         </executions>
         <configuration>
-<!--          <tasks>-->
-<!--            <echo>Removing slf4j-api's dummy StaticLoggerBinder and StaticMarkerBinder</echo>-->
-<!--            <delete dir="target/classes/org/slf4j/impl"/>-->
-<!--          </tasks>-->
-          <!-- use {@link #target} instead -->
-            <target>
-                <echo>Removing slf4j-api's dummy StaticLoggerBinder and StaticMarkerBinder</echo>
-                <delete dir="target/classes/org/slf4j/impl"/>
-            </target>
+          <tasks>
+            <echo>Removing slf4j-api's dummy StaticLoggerBinder and StaticMarkerBinder</echo>
+            <delete dir="target/classes/org/slf4j/impl"/>
+          </tasks>
         </configuration>
       </plugin>
 
