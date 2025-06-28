@@ -22,11 +22,11 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
 import java.util.Map;
 
-import org.slf4j.spi.MDCAdapter;
+import org1.slf4j.spi.MDCAdapter;
 
 /**
  * This adapter is an empty implementation of the {@link MDCAdapter} interface.

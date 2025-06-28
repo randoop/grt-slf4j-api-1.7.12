@@ -22,10 +22,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
-import org.slf4j.Logger;
-import org.slf4j.Marker;
+import org1.slf4j.Logger;
+import org1.slf4j.Marker;
 
 /**
  * A logger implementation which logs via a delegate logger. By default, the delegate is a
@@ -319,7 +319,7 @@ public class SubstituteLogger implements Logger {
     }
 
     /**
-     * Typically called after the {@link org.slf4j.LoggerFactory} initialization phase is completed.
+     * Typically called after the {@link org1.slf4j.LoggerFactory} initialization phase is completed.
      * @param delegate
      */
     public void setDelegate(Logger delegate) {

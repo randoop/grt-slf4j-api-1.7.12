@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
 /**
  * An internal utility class.
@@ -66,7 +66,7 @@ public final class Util {
 
         // trace[i] = Util; trace[i+1] = caller; trace[i+2] = caller's caller
         if (i >= trace.length || i + 2 >= trace.length) {
-            throw new IllegalStateException("Failed to find org.slf4j.helpers.Util or its caller in the stack; " + "this should not happen");
+            throw new IllegalStateException("Failed to find org1.slf4j.helpers.Util or its caller in the stack; " + "this should not happen");
         }
 
         return trace[i + 2];

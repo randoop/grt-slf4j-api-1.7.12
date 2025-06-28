@@ -22,14 +22,14 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import org.slf4j.Marker;
+import org1.slf4j.Marker;
 
 /**
  * A simple implementation of the {@link Marker} interface.

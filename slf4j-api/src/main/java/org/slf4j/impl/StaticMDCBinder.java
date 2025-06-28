@@ -22,9 +22,9 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.impl;
+package org1.slf4j.impl;
 
-import org.slf4j.spi.MDCAdapter;
+import org1.slf4j.spi.MDCAdapter;
 
 /**
  * This class is only a stub. Real implementations are found in 

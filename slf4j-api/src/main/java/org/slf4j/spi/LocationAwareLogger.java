@@ -22,10 +22,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.spi;
+package org1.slf4j.spi;
 
-import org.slf4j.Logger;
-import org.slf4j.Marker;
+import org1.slf4j.Logger;
+import org1.slf4j.Marker;
 
 /**
  * An <b>optional</b> interface helping integration with logging systems capable of 

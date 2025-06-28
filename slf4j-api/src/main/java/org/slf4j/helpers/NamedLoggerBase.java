@@ -22,13 +22,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org1.slf4j.Logger;
+import org1.slf4j.LoggerFactory;
 
 /**
  * Serves as base class for named logger implementation. More significantly, this

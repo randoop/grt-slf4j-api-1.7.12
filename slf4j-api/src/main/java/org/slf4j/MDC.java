@@ -22,16 +22,16 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j;
+package org1.slf4j;
 
 import java.io.Closeable;
 import java.util.Map;
 
-import org.slf4j.helpers.NOPMDCAdapter;
-import org.slf4j.helpers.BasicMDCAdapter;
-import org.slf4j.helpers.Util;
-import org.slf4j.impl.StaticMDCBinder;
-import org.slf4j.spi.MDCAdapter;
+import org1.slf4j.helpers.NOPMDCAdapter;
+import org1.slf4j.helpers.BasicMDCAdapter;
+import org1.slf4j.helpers.Util;
+import org1.slf4j.impl.StaticMDCBinder;
+import org1.slf4j.spi.MDCAdapter;
 
 /**
  * This class hides and serves as a substitute for the underlying logging
@@ -92,7 +92,7 @@ public class MDC {
             mdcAdapter = new NOPMDCAdapter();
             String msg = ncde.getMessage();
             if (msg != null && msg.indexOf("StaticMDCBinder") != -1) {
-                Util.report("Failed to load class \"org.slf4j.impl.StaticMDCBinder\".");
+                Util.report("Failed to load class \"org1.slf4j.impl.StaticMDCBinder\".");
                 Util.report("Defaulting to no-operation MDCAdapter implementation.");
                 Util.report("See " + NO_STATIC_MDC_BINDER_URL + " for further details.");
             } else {

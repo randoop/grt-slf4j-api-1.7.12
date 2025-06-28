@@ -22,10 +22,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
-import org.slf4j.Logger;
-import org.slf4j.Marker;
+import org1.slf4j.Logger;
+import org1.slf4j.Marker;
 
 /**
  * This class serves as base for adapters or native implementations of logging systems 

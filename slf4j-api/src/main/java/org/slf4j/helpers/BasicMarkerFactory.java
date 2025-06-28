@@ -22,20 +22,20 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j.helpers;
+package org1.slf4j.helpers;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import org.slf4j.IMarkerFactory;
-import org.slf4j.Marker;
+import org1.slf4j.IMarkerFactory;
+import org1.slf4j.Marker;
 
 /**
  * An almost trivial implementation of the {@link IMarkerFactory}
  * interface which creates {@link BasicMarker} instances.
  * 
  * <p>Simple logging systems can conform to the SLF4J API by binding
- * {@link org.slf4j.MarkerFactory} with an instance of this class.
+ * {@link org1.slf4j.MarkerFactory} with an instance of this class.
  *
  * @author Ceki G&uuml;lc&uuml;
  */
@@ -47,7 +47,7 @@ public class BasicMarkerFactory implements IMarkerFactory {
      * Regular users should <em>not</em> create
      * <code>BasicMarkerFactory</code> instances. <code>Marker</code>
      * instances can be obtained using the static {@link
-     * org.slf4j.MarkerFactory#getMarker} method.
+     * org1.slf4j.MarkerFactory#getMarker} method.
      */
     public BasicMarkerFactory() {
     }

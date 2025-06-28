@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package org.slf4j;
+package org1.slf4j;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,17 +33,17 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.slf4j.helpers.NOPLoggerFactory;
-import org.slf4j.helpers.SubstituteLogger;
-import org.slf4j.helpers.SubstituteLoggerFactory;
-import org.slf4j.helpers.Util;
-import org.slf4j.impl.StaticLoggerBinder;
+import org1.slf4j.helpers.NOPLoggerFactory;
+import org1.slf4j.helpers.SubstituteLogger;
+import org1.slf4j.helpers.SubstituteLoggerFactory;
+import org1.slf4j.helpers.Util;
+import org1.slf4j.impl.StaticLoggerBinder;
 
 /**
  * The <code>LoggerFactory</code> is a utility class producing Loggers for
  * various logging APIs, most notably for log4j, logback and JDK 1.4 logging.
- * Other implementations such as {@link org.slf4j.impl.NOPLogger NOPLogger} and
- * {@link org.slf4j.impl.SimpleLogger SimpleLogger} are also supported.
+ * Other implementations such as {@link org1.slf4j.impl.NOPLogger NOPLogger} and
+ * {@link org1.slf4j.impl.SimpleLogger SimpleLogger} are also supported.
  * <p/>
  * <p/>
  * <code>LoggerFactory</code> is essentially a wrapper around an
@@ -71,7 +71,7 @@ public final class LoggerFactory {
     static final String LOGGER_NAME_MISMATCH_URL = CODES_PREFIX + "#loggerNameMismatch";
 
     static final String UNSUCCESSFUL_INIT_URL = CODES_PREFIX + "#unsuccessfulInit";
-    static final String UNSUCCESSFUL_INIT_MSG = "org.slf4j.LoggerFactory could not be successfully initialized. See also " + UNSUCCESSFUL_INIT_URL;
+    static final String UNSUCCESSFUL_INIT_MSG = "org1.slf4j.LoggerFactory could not be successfully initialized. See also " + UNSUCCESSFUL_INIT_URL;
 
     static final int UNINITIALIZED = 0;
     static final int ONGOING_INITIALIZATION = 1;
@@ -123,12 +123,12 @@ public final class LoggerFactory {
         }
     }
 
-    private static boolean messageContainsOrgSlf4jImplStaticLoggerBinder(String msg) {
+    private static boolean messageContainsorgSlf4jImplStaticLoggerBinder(String msg) {
         if (msg == null)
             return false;
-        if (msg.indexOf("org/slf4j/impl/StaticLoggerBinder") != -1)
+        if (msg.indexOf("org1/slf4j/impl/StaticLoggerBinder") != -1)
             return true;
-        if (msg.indexOf("org.slf4j.impl.StaticLoggerBinder") != -1)
+        if (msg.indexOf("org1.slf4j.impl.StaticLoggerBinder") != -1)
             return true;
         return false;
     }
@@ -144,9 +144,9 @@ public final class LoggerFactory {
             fixSubstitutedLoggers();
         } catch (NoClassDefFoundError ncde) {
             String msg = ncde.getMessage();
-            if (messageContainsOrgSlf4jImplStaticLoggerBinder(msg)) {
+            if (messageContainsorgSlf4jImplStaticLoggerBinder(msg)) {
                 INITIALIZATION_STATE = NOP_FALLBACK_INITIALIZATION;
-                Util.report("Failed to load class \"org.slf4j.impl.StaticLoggerBinder\".");
+                Util.report("Failed to load class \"org1.slf4j.impl.StaticLoggerBinder\".");
                 Util.report("Defaulting to no-operation (NOP) logger implementation");
                 Util.report("See " + NO_STATICLOGGERBINDER_URL + " for further details.");
             } else {
@@ -155,7 +155,7 @@ public final class LoggerFactory {
             }
         } catch (java.lang.NoSuchMethodError nsme) {
             String msg = nsme.getMessage();
-            if (msg != null && msg.indexOf("org.slf4j.impl.StaticLoggerBinder.getSingleton()") != -1) {
+            if (msg != null && msg.indexOf("org1.slf4j.impl.StaticLoggerBinder.getSingleton()") != -1) {
                 INITIALIZATION_STATE = FAILED_INITIALIZATION;
                 Util.report("slf4j-api 1.6.x (or later) is incompatible with this binding.");
                 Util.report("Your binding is version 1.5.5 or earlier.");
@@ -221,7 +221,7 @@ public final class LoggerFactory {
 
     // We need to use the name of the StaticLoggerBinder class, but we can't reference
     // the class itself.
-    private static String STATIC_LOGGER_BINDER_PATH = "org/slf4j/impl/StaticLoggerBinder.class";
+    private static String STATIC_LOGGER_BINDER_PATH = "org1/slf4j/impl/StaticLoggerBinder.class";
 
     private static Set<URL> findPossibleStaticLoggerBinderPathSet() {
         // use Set instead of list in order to deal with bug #138
@@ -298,7 +298,7 @@ public final class LoggerFactory {
      * @return logger
      *
      *
-     * @see <a href="http://www.slf4j.org/codes.html#loggerNameMismatch">Detected logger name mismatch</a> 
+     * @see <a href="http://www.slf4j.org1/codes.html#loggerNameMismatch">Detected logger name mismatch</a> 
      */
     public static Logger getLogger(Class<?> clazz) {
         Logger logger = getLogger(clazz.getName());
