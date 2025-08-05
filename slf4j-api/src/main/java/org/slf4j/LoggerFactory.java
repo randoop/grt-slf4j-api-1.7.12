@@ -24,6 +24,9 @@
  */
 package org1.slf4j;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -97,6 +100,7 @@ public final class LoggerFactory {
     static private final String[] API_COMPATIBILITY_LIST = new String[] { "1.6", "1.7" };
 
     // private constructor prevents instantiation
+    @SideEffectFree
     private LoggerFactory() {
     }
 
@@ -111,11 +115,13 @@ public final class LoggerFactory {
      * <p/>
      * You are strongly discouraged from calling this method in production code.
      */
+    @Impure
     static void reset() {
         INITIALIZATION_STATE = UNINITIALIZED;
         TEMP_FACTORY = new SubstituteLoggerFactory();
     }
 
+    @Impure
     private final static void performInitialization() {
         bind();
         if (INITIALIZATION_STATE == SUCCESSFUL_INITIALIZATION) {
@@ -123,6 +129,7 @@ public final class LoggerFactory {
         }
     }
 
+    @Pure
     private static boolean messageContainsorgSlf4jImplStaticLoggerBinder(String msg) {
         if (msg == null)
             return false;
@@ -133,6 +140,7 @@ public final class LoggerFactory {
         return false;
     }
 
+    @Impure
     private final static void bind() {
         try {
             Set<URL> staticLoggerBinderPathSet = findPossibleStaticLoggerBinderPathSet();
@@ -168,11 +176,13 @@ public final class LoggerFactory {
         }
     }
 
+    @Impure
     static void failedBinding(Throwable t) {
         INITIALIZATION_STATE = FAILED_INITIALIZATION;
         Util.report("Failed to instantiate SLF4J LoggerFactory", t);
     }
 
+    @Impure
     private final static void fixSubstitutedLoggers() {
         List<SubstituteLogger> loggers = TEMP_FACTORY.getLoggers();
 
@@ -193,6 +203,7 @@ public final class LoggerFactory {
         TEMP_FACTORY.clear();
     }
 
+    @Impure
     private final static void versionSanityCheck() {
         try {
             String requested = StaticLoggerBinder.REQUESTED_API_VERSION;
@@ -223,6 +234,7 @@ public final class LoggerFactory {
     // the class itself.
     private static String STATIC_LOGGER_BINDER_PATH = "org1/slf4j/impl/StaticLoggerBinder.class";
 
+    @Impure
     private static Set<URL> findPossibleStaticLoggerBinderPathSet() {
         // use Set instead of list in order to deal with bug #138
         // LinkedHashSet appropriate here because it preserves insertion order during iteration
@@ -245,6 +257,7 @@ public final class LoggerFactory {
         return staticLoggerBinderPathSet;
     }
 
+    @Pure
     private static boolean isAmbiguousStaticLoggerBinderPathSet(Set<URL> staticLoggerBinderPathSet) {
         return staticLoggerBinderPathSet.size() > 1;
     }
@@ -254,6 +267,7 @@ public final class LoggerFactory {
      * No reporting is done otherwise.
      *
      */
+    @Impure
     private static void reportMultipleBindingAmbiguity(Set<URL> staticLoggerBinderPathSet) {
         if (isAmbiguousStaticLoggerBinderPathSet(staticLoggerBinderPathSet)) {
             Util.report("Class path contains multiple SLF4J bindings.");
@@ -266,6 +280,7 @@ public final class LoggerFactory {
         }
     }
 
+    @Impure
     private static void reportActualBinding(Set<URL> staticLoggerBinderPathSet) {
         if (isAmbiguousStaticLoggerBinderPathSet(staticLoggerBinderPathSet)) {
             Util.report("Actual binding is of type [" + StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr() + "]");
@@ -279,6 +294,7 @@ public final class LoggerFactory {
      * @param name The name of the logger.
      * @return logger
      */
+    @Impure
     public static Logger getLogger(String name) {
         ILoggerFactory iLoggerFactory = getILoggerFactory();
         return iLoggerFactory.getLogger(name);
@@ -300,6 +316,7 @@ public final class LoggerFactory {
      *
      * @see <a href="http://www.slf4j.org1/codes.html#loggerNameMismatch">Detected logger name mismatch</a> 
      */
+    @Impure
     public static Logger getLogger(Class<?> clazz) {
         Logger logger = getLogger(clazz.getName());
         if (DETECT_LOGGER_NAME_MISMATCH) {
@@ -313,6 +330,7 @@ public final class LoggerFactory {
         return logger;
     }
 
+    @Pure
     private static boolean nonMatchingClasses(Class<?> clazz, Class<?> autoComputedCallingClass) {
         return !autoComputedCallingClass.isAssignableFrom(clazz);
     }
@@ -325,6 +343,7 @@ public final class LoggerFactory {
      *
      * @return the ILoggerFactory instance in use
      */
+    @Impure
     public static ILoggerFactory getILoggerFactory() {
         if (INITIALIZATION_STATE == UNINITIALIZED) {
             INITIALIZATION_STATE = ONGOING_INITIALIZATION;

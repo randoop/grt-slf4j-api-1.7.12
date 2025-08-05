@@ -24,6 +24,9 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -49,6 +52,7 @@ public class BasicMarkerFactory implements IMarkerFactory {
      * instances can be obtained using the static {@link
      * org1.slf4j.MarkerFactory#getMarker} method.
      */
+    @SideEffectFree
     public BasicMarkerFactory() {
     }
 
@@ -59,6 +63,7 @@ public class BasicMarkerFactory implements IMarkerFactory {
      * @param name the name of the marker to be created
      * @return a Marker instance
      */
+    @Impure
     public Marker getMarker(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Marker name cannot be null");
@@ -78,6 +83,7 @@ public class BasicMarkerFactory implements IMarkerFactory {
     /**
      * Does the name marked already exist?
      */
+    @Pure
     public boolean exists(String name) {
         if (name == null) {
             return false;
@@ -85,6 +91,7 @@ public class BasicMarkerFactory implements IMarkerFactory {
         return markerMap.containsKey(name);
     }
 
+    @Impure
     public boolean detachMarker(String name) {
         if (name == null) {
             return false;
@@ -92,6 +99,8 @@ public class BasicMarkerFactory implements IMarkerFactory {
         return (markerMap.remove(name) != null);
     }
 
+    @SideEffectFree
+    @Impure
     public Marker getDetachedMarker(String name) {
         return new BasicMarker(name);
     }

@@ -24,6 +24,7 @@
  */
 package org1.slf4j.spi;
 
+import org.checkerframework.dataflow.qual.Impure;
 import java.util.Map;
 
 /**
@@ -44,6 +45,7 @@ public interface MDCAdapter {
      * <p>If the current thread does not have a context map it is created as a side
      * effect of this call.
      */
+    @Impure
     public void put(String key, String val);
 
     /**
@@ -52,6 +54,7 @@ public interface MDCAdapter {
      * 
      * @return the string value identified by the <code>key</code> parameter.
      */
+    @Impure
     public String get(String key);
 
     /**
@@ -62,11 +65,13 @@ public interface MDCAdapter {
      * This method does nothing if there is no previous value 
      * associated with <code>key</code>.
      */
+    @Impure
     public void remove(String key);
 
     /**
      * Clear all entries in the MDC.
      */
+    @Impure
     public void clear();
 
     /**
@@ -76,6 +81,7 @@ public interface MDCAdapter {
      * @return A copy of the current thread's context map. May be null.
      * @since 1.5.1
      */
+    @Impure
     public Map<String, String> getCopyOfContextMap();
 
     /**
@@ -87,5 +93,6 @@ public interface MDCAdapter {
      * 
      * @since 1.5.1
      */
+    @Impure
     public void setContextMap(Map<String, String> contextMap);
 }

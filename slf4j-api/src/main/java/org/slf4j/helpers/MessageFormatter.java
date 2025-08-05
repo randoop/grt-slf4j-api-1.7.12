@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -120,6 +122,7 @@ final public class MessageFormatter {
      *          The argument to be substituted in place of the formatting anchor
      * @return The formatted message
      */
+    @Impure
     final public static FormattingTuple format(String messagePattern, Object arg) {
         return arrayFormat(messagePattern, new Object[] { arg });
     }
@@ -147,10 +150,12 @@ final public class MessageFormatter {
      *          anchor
      * @return The formatted message
      */
+    @Impure
     final public static FormattingTuple format(final String messagePattern, Object arg1, Object arg2) {
         return arrayFormat(messagePattern, new Object[] { arg1, arg2 });
     }
 
+    @Pure
     static final Throwable getThrowableCandidate(Object[] argArray) {
         if (argArray == null || argArray.length == 0) {
             return null;
@@ -175,6 +180,7 @@ final public class MessageFormatter {
      *          anchors
      * @return The formatted message
      */
+    @Impure
     final public static FormattingTuple arrayFormat(final String messagePattern, final Object[] argArray) {
 
         Throwable throwableCandidate = getThrowableCandidate(argArray);
@@ -238,6 +244,7 @@ final public class MessageFormatter {
         }
     }
 
+    @Pure
     final static boolean isEscapedDelimeter(String messagePattern, int delimeterStartIndex) {
 
         if (delimeterStartIndex == 0) {
@@ -251,6 +258,7 @@ final public class MessageFormatter {
         }
     }
 
+    @Pure
     final static boolean isDoubleEscaped(String messagePattern, int delimeterStartIndex) {
         if (delimeterStartIndex >= 2 && messagePattern.charAt(delimeterStartIndex - 2) == ESCAPE_CHAR) {
             return true;
@@ -260,6 +268,7 @@ final public class MessageFormatter {
     }
 
     // special treatment of array values was suggested by 'lizongbo'
+    @Impure
     private static void deeplyAppendParameter(StringBuilder sbuf, Object o, Map<Object[], Object> seenMap) {
         if (o == null) {
             sbuf.append("null");
@@ -292,6 +301,7 @@ final public class MessageFormatter {
         }
     }
 
+    @Impure
     private static void safeObjectAppend(StringBuilder sbuf, Object o) {
         try {
             String oAsString = o.toString();
@@ -304,6 +314,7 @@ final public class MessageFormatter {
 
     }
 
+    @Impure
     private static void objectArrayAppend(StringBuilder sbuf, Object[] a, Map<Object[], Object> seenMap) {
         sbuf.append('[');
         if (!seenMap.containsKey(a)) {
@@ -322,6 +333,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void booleanArrayAppend(StringBuilder sbuf, boolean[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -333,6 +345,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void byteArrayAppend(StringBuilder sbuf, byte[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -344,6 +357,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void charArrayAppend(StringBuilder sbuf, char[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -355,6 +369,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void shortArrayAppend(StringBuilder sbuf, short[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -366,6 +381,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void intArrayAppend(StringBuilder sbuf, int[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -377,6 +393,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void longArrayAppend(StringBuilder sbuf, long[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -388,6 +405,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void floatArrayAppend(StringBuilder sbuf, float[] a) {
         sbuf.append('[');
         final int len = a.length;
@@ -399,6 +417,7 @@ final public class MessageFormatter {
         sbuf.append(']');
     }
 
+    @Impure
     private static void doubleArrayAppend(StringBuilder sbuf, double[] a) {
         sbuf.append('[');
         final int len = a.length;

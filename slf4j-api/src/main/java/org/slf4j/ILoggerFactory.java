@@ -23,6 +23,7 @@
  *
  */
 package org1.slf4j;
+import org.checkerframework.dataflow.qual.Impure;
 
 /**
  * <code>ILoggerFactory</code> instances manufacture {@link Logger}
@@ -53,5 +54,6 @@ public interface ILoggerFactory {
      * @param name the name of the Logger to return
      * @return a Logger instance 
      */
+    @Impure
     public Logger getLogger(String name);
 }

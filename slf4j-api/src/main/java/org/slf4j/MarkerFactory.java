@@ -24,6 +24,9 @@
  */
 package org1.slf4j;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.helpers.BasicMarkerFactory;
 import org1.slf4j.helpers.Util;
 import org1.slf4j.impl.StaticMarkerBinder;
@@ -44,6 +47,7 @@ import org1.slf4j.impl.StaticMarkerBinder;
 public class MarkerFactory {
     static IMarkerFactory markerFactory;
 
+    @SideEffectFree
     private MarkerFactory() {
     }
 
@@ -67,6 +71,7 @@ public class MarkerFactory {
      *          The name of the {@link Marker} object to return.
      * @return marker
      */
+    @Impure
     public static Marker getMarker(String name) {
         return markerFactory.getMarker(name);
     }
@@ -78,6 +83,8 @@ public class MarkerFactory {
      * @return a dangling marker
      * @since 1.5.1
      */
+    @SideEffectFree
+    @Impure
     public static Marker getDetachedMarker(String name) {
         return markerFactory.getDetachedMarker(name);
     }
@@ -90,6 +97,7 @@ public class MarkerFactory {
      * 
      * @return the IMarkerFactory instance in use
      */
+    @Pure
     public static IMarkerFactory getIMarkerFactory() {
         return markerFactory;
     }

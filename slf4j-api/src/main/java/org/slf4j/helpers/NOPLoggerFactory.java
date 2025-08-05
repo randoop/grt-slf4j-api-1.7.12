@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.ILoggerFactory;
 import org1.slf4j.Logger;
 import org1.slf4j.helpers.NOPLogger;
@@ -37,10 +39,12 @@ import org1.slf4j.helpers.NOPLogger;
  */
 public class NOPLoggerFactory implements ILoggerFactory {
 
+    @SideEffectFree
     public NOPLoggerFactory() {
         // nothing to do
     }
 
+    @Pure
     public Logger getLogger(String name) {
         return NOPLogger.NOP_LOGGER;
     }

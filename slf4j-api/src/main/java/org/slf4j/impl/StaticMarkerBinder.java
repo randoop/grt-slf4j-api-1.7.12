@@ -24,6 +24,8 @@
  */
 package org1.slf4j.impl;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.IMarkerFactory;
 import org1.slf4j.MarkerFactory;
 import org1.slf4j.helpers.BasicMarkerFactory;
@@ -47,6 +49,7 @@ public class StaticMarkerBinder implements MarkerFactoryBinder {
      */
     public static final StaticMarkerBinder SINGLETON = new StaticMarkerBinder();
 
+    @SideEffectFree
     private StaticMarkerBinder() {
         throw new UnsupportedOperationException("This code should never make it into the jar");
     }
@@ -55,6 +58,7 @@ public class StaticMarkerBinder implements MarkerFactoryBinder {
      * Currently this method always returns an instance of 
      * {@link BasicMarkerFactory}.
      */
+    @Pure
     public IMarkerFactory getMarkerFactory() {
         throw new UnsupportedOperationException("This code should never make it into the jar");
     }
@@ -63,6 +67,7 @@ public class StaticMarkerBinder implements MarkerFactoryBinder {
      * Currently, this method returns the class name of
      * {@link BasicMarkerFactory}.
      */
+    @Pure
     public String getMarkerFactoryClassStr() {
         throw new UnsupportedOperationException("This code should never make it into the jar");
     }

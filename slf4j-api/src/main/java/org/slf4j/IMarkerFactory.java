@@ -23,6 +23,9 @@
  *
  */
 package org1.slf4j;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
 
 /**
  * Implementations of this interface are used to manufacture {@link Marker}
@@ -47,6 +50,7 @@ public interface IMarkerFactory {
      *
      * @return a Marker instance
      */
+    @Impure
     Marker getMarker(String name);
 
     /**
@@ -56,6 +60,7 @@ public interface IMarkerFactory {
      * @param name logger name to check for
      * @return true id the marker exists, false otherwise. 
      */
+    @Pure
     boolean exists(String name);
 
     /**
@@ -68,6 +73,7 @@ public interface IMarkerFactory {
      * @param name The name of the marker to detach
      * @return whether the marker  could be detached or not
      */
+    @Impure
     boolean detachMarker(String name);
 
     /**
@@ -77,5 +83,7 @@ public interface IMarkerFactory {
      * @return a dangling marker
      * @since 1.5.1
      */
+    @SideEffectFree
+    @Impure
     Marker getDetachedMarker(String name);
 }

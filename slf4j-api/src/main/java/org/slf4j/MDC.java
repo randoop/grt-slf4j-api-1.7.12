@@ -24,6 +24,9 @@
  */
 package org1.slf4j;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import java.io.Closeable;
 import java.util.Map;
 
@@ -73,15 +76,18 @@ public class MDC {
     public static class MDCCloseable implements Closeable {
         private final String key;
 
+        @SideEffectFree
         private MDCCloseable(String key) {
             this.key = key;
         }
 
+        @Impure
         public void close() {
             MDC.remove(this.key);
         }
     }
 
+    @SideEffectFree
     private MDC() {
     }
 
@@ -119,6 +125,7 @@ public class MDC {
      * @throws IllegalArgumentException
      *           in case the "key" parameter is null
      */
+    @Impure
     public static void put(String key, String val) throws IllegalArgumentException {
         if (key == null) {
             throw new IllegalArgumentException("key parameter cannot be null");
@@ -157,6 +164,7 @@ public class MDC {
      * @throws IllegalArgumentException
      *           in case the "key" parameter is null
      */
+    @Impure
     public static MDCCloseable putCloseable(String key, String val) throws IllegalArgumentException {
         put(key, val);
         return new MDCCloseable(key);
@@ -174,6 +182,7 @@ public class MDC {
      * @throws IllegalArgumentException
      *           in case the "key" parameter is null
      */
+    @Impure
     public static String get(String key) throws IllegalArgumentException {
         if (key == null) {
             throw new IllegalArgumentException("key parameter cannot be null");
@@ -195,6 +204,7 @@ public class MDC {
      * @throws IllegalArgumentException
      *           in case the "key" parameter is null
      */
+    @Impure
     public static void remove(String key) throws IllegalArgumentException {
         if (key == null) {
             throw new IllegalArgumentException("key parameter cannot be null");
@@ -209,6 +219,7 @@ public class MDC {
     /**
      * Clear all entries in the MDC of the underlying implementation.
      */
+    @Impure
     public static void clear() {
         if (mdcAdapter == null) {
             throw new IllegalStateException("MDCAdapter cannot be null. See also " + NULL_MDCA_URL);
@@ -223,6 +234,7 @@ public class MDC {
      * @return A copy of the current thread's context map. May be null.
      * @since 1.5.1
      */
+    @Impure
     public static Map<String, String> getCopyOfContextMap() {
         if (mdcAdapter == null) {
             throw new IllegalStateException("MDCAdapter cannot be null. See also " + NULL_MDCA_URL);
@@ -239,6 +251,7 @@ public class MDC {
      *          must contain only keys and values of type String
      * @since 1.5.1
      */
+    @Impure
     public static void setContextMap(Map<String, String> contextMap) {
         if (mdcAdapter == null) {
             throw new IllegalStateException("MDCAdapter cannot be null. See also " + NULL_MDCA_URL);
@@ -252,6 +265,7 @@ public class MDC {
      * @return the MDcAdapter instance currently in use.
      * @since 1.4.2
      */
+    @Pure
     public static MDCAdapter getMDCAdapter() {
         return mdcAdapter;
     }

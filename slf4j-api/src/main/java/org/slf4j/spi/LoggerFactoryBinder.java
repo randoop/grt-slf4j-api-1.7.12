@@ -24,6 +24,7 @@
  */
 package org1.slf4j.spi;
 
+import org.checkerframework.dataflow.qual.Pure;
 import org1.slf4j.ILoggerFactory;
 
 /**
@@ -41,6 +42,7 @@ public interface LoggerFactoryBinder {
      * @return the instance of {@link ILoggerFactory} that 
      * {@link org1.slf4j.LoggerFactory} class should bind to.
      */
+    @Pure
     public ILoggerFactory getLoggerFactory();
 
     /**
@@ -53,5 +55,6 @@ public interface LoggerFactoryBinder {
      * 
      * @return the class name of the intended {@link ILoggerFactory} instance
      */
+    @Pure
     public String getLoggerFactoryClassStr();
 }

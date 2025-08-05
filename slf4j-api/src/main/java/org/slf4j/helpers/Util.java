@@ -23,6 +23,8 @@
  *
  */
 package org1.slf4j.helpers;
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 
 /**
  * An internal utility class.
@@ -32,6 +34,7 @@ package org1.slf4j.helpers;
  */
 public final class Util {
 
+    @SideEffectFree
     private Util() {
     }
 
@@ -41,6 +44,7 @@ public final class Util {
      * inside this package.
      */
     private static final class ClassContextSecurityManager extends SecurityManager {
+        @Impure
         protected Class<?>[] getClassContext() {
             return super.getClassContext();
         }
@@ -53,6 +57,7 @@ public final class Util {
      *
      * @return the name of the class which called the invoking method.
      */
+    @Impure
     public static Class<?> getCallingClass() {
         Class<?>[] trace = SECURITY_MANAGER.getClassContext();
         String thisClassName = Util.class.getName();
@@ -72,12 +77,14 @@ public final class Util {
         return trace[i + 2];
     }
 
+    @Impure
     static final public void report(String msg, Throwable t) {
         System.err.println(msg);
         System.err.println("Reported exception:");
         t.printStackTrace();
     }
 
+    @Impure
     static final public void report(String msg) {
         System.err.println("SLF4J: " + msg);
     }

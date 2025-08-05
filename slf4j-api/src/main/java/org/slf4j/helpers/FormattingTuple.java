@@ -23,6 +23,9 @@
  *
  */
 package org1.slf4j.helpers;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+import org.checkerframework.dataflow.qual.Impure;
 
 /**
  * Holds the results of formatting done by {@link MessageFormatter}.
@@ -37,10 +40,14 @@ public class FormattingTuple {
     private Throwable throwable;
     private Object[] argArray;
 
+    @SideEffectFree
+    @Impure
     public FormattingTuple(String message) {
         this(message, null, null);
     }
 
+    @SideEffectFree
+    @Impure
     public FormattingTuple(String message, Object[] argArray, Throwable throwable) {
         this.message = message;
         this.throwable = throwable;
@@ -51,6 +58,7 @@ public class FormattingTuple {
         }
     }
 
+    @SideEffectFree
     static Object[] trimmedCopy(Object[] argArray) {
         if (argArray == null || argArray.length == 0) {
             throw new IllegalStateException("non-sensical empty or null argument array");
@@ -61,14 +69,17 @@ public class FormattingTuple {
         return trimmed;
     }
 
+    @Pure
     public String getMessage() {
         return message;
     }
 
+    @Pure
     public Object[] getArgArray() {
         return argArray;
     }
 
+    @Pure
     public Throwable getThrowable() {
         return throwable;
     }

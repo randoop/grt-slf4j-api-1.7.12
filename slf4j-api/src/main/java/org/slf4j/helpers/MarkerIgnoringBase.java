@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.Impure;
 import org1.slf4j.Logger;
 import org1.slf4j.Marker;
 
@@ -39,126 +41,158 @@ public abstract class MarkerIgnoringBase extends NamedLoggerBase implements Logg
 
     private static final long serialVersionUID = 9044267456635152283L;
 
+    @Impure
     public boolean isTraceEnabled(Marker marker) {
         return isTraceEnabled();
     }
 
+    @Impure
     public void trace(Marker marker, String msg) {
         trace(msg);
     }
 
+    @Impure
     public void trace(Marker marker, String format, Object arg) {
         trace(format, arg);
     }
 
+    @Impure
     public void trace(Marker marker, String format, Object arg1, Object arg2) {
         trace(format, arg1, arg2);
     }
 
+    @Impure
     public void trace(Marker marker, String format, Object... arguments) {
         trace(format, arguments);
     }
 
+    @Impure
     public void trace(Marker marker, String msg, Throwable t) {
         trace(msg, t);
     }
 
+    @Impure
     public boolean isDebugEnabled(Marker marker) {
         return isDebugEnabled();
     }
 
+    @Impure
     public void debug(Marker marker, String msg) {
         debug(msg);
     }
 
+    @Impure
     public void debug(Marker marker, String format, Object arg) {
         debug(format, arg);
     }
 
+    @Impure
     public void debug(Marker marker, String format, Object arg1, Object arg2) {
         debug(format, arg1, arg2);
     }
 
+    @Impure
     public void debug(Marker marker, String format, Object... arguments) {
         debug(format, arguments);
     }
 
+    @Impure
     public void debug(Marker marker, String msg, Throwable t) {
         debug(msg, t);
     }
 
+    @Impure
     public boolean isInfoEnabled(Marker marker) {
         return isInfoEnabled();
     }
 
+    @Impure
     public void info(Marker marker, String msg) {
         info(msg);
     }
 
+    @Impure
     public void info(Marker marker, String format, Object arg) {
         info(format, arg);
     }
 
+    @Impure
     public void info(Marker marker, String format, Object arg1, Object arg2) {
         info(format, arg1, arg2);
     }
 
+    @Impure
     public void info(Marker marker, String format, Object... arguments) {
         info(format, arguments);
     }
 
+    @Impure
     public void info(Marker marker, String msg, Throwable t) {
         info(msg, t);
     }
 
+    @Impure
     public boolean isWarnEnabled(Marker marker) {
         return isWarnEnabled();
     }
 
+    @Impure
     public void warn(Marker marker, String msg) {
         warn(msg);
     }
 
+    @Impure
     public void warn(Marker marker, String format, Object arg) {
         warn(format, arg);
     }
 
+    @Impure
     public void warn(Marker marker, String format, Object arg1, Object arg2) {
         warn(format, arg1, arg2);
     }
 
+    @Impure
     public void warn(Marker marker, String format, Object... arguments) {
         warn(format, arguments);
     }
 
+    @Impure
     public void warn(Marker marker, String msg, Throwable t) {
         warn(msg, t);
     }
 
+    @Impure
     public boolean isErrorEnabled(Marker marker) {
         return isErrorEnabled();
     }
 
+    @Impure
     public void error(Marker marker, String msg) {
         error(msg);
     }
 
+    @Impure
     public void error(Marker marker, String format, Object arg) {
         error(format, arg);
     }
 
+    @Impure
     public void error(Marker marker, String format, Object arg1, Object arg2) {
         error(format, arg1, arg2);
     }
 
+    @Impure
     public void error(Marker marker, String format, Object... arguments) {
         error(format, arguments);
     }
 
+    @Impure
     public void error(Marker marker, String msg, Throwable t) {
         error(msg, t);
     }
 
+    @Pure
+    @Impure
     public String toString() {
         return this.getClass().getName() + "(" + getName() + ")";
     }

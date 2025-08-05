@@ -24,6 +24,8 @@
  */
 package org1.slf4j.impl;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.spi.MDCAdapter;
 
 /**
@@ -39,6 +41,7 @@ public class StaticMDCBinder {
      */
     public static final StaticMDCBinder SINGLETON = new StaticMDCBinder();
 
+    @SideEffectFree
     private StaticMDCBinder() {
         throw new UnsupportedOperationException("This code should never make it into the jar");
     }
@@ -47,10 +50,12 @@ public class StaticMDCBinder {
      * Currently this method always returns an instance of 
      * {@link StaticMDCBinder}.
      */
+    @Pure
     public MDCAdapter getMDCA() {
         throw new UnsupportedOperationException("This code should never make it into the jar");
     }
 
+    @Pure
     public String getMDCAdapterClassStr() {
         throw new UnsupportedOperationException("This code should never make it into the jar");
     }

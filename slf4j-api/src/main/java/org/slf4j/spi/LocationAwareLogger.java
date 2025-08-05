@@ -24,6 +24,7 @@
  */
 package org1.slf4j.spi;
 
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.Logger;
 import org1.slf4j.Marker;
 
@@ -55,6 +56,7 @@ public interface LocationAwareLogger extends Logger {
      * @param message The message for the log event
      * @param t Throwable associated with the log event, may be null.
      */
+    @SideEffectFree
     public void log(Marker marker, String fqcn, int level, String message, Object[] argArray, Throwable t);
 
 }

@@ -24,6 +24,8 @@
  */
 package org1.slf4j.impl;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.ILoggerFactory;
 
 /**
@@ -48,6 +50,7 @@ public class StaticLoggerBinder {
      * 
      * @return the StaticLoggerBinder singleton
      */
+    @Pure
     public static final StaticLoggerBinder getSingleton() {
         return SINGLETON;
     }
@@ -59,14 +62,17 @@ public class StaticLoggerBinder {
     // to avoid constant folding by the compiler, this field must *not* be final
     public static String REQUESTED_API_VERSION = "1.6.99"; // !final
 
+    @SideEffectFree
     private StaticLoggerBinder() {
         throw new UnsupportedOperationException("This code should have never made it into slf4j-api.jar");
     }
 
+    @Pure
     public ILoggerFactory getLoggerFactory() {
         throw new UnsupportedOperationException("This code should never make it into slf4j-api.jar");
     }
 
+    @Pure
     public String getLoggerFactoryClassStr() {
         throw new UnsupportedOperationException("This code should never make it into slf4j-api.jar");
     }

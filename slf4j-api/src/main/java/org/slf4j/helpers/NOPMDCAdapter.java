@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.SideEffectFree;
+import org.checkerframework.dataflow.qual.Pure;
 import java.util.Map;
 
 import org1.slf4j.spi.MDCAdapter;
@@ -39,23 +41,29 @@ import org1.slf4j.spi.MDCAdapter;
  */
 public class NOPMDCAdapter implements MDCAdapter {
 
+    @SideEffectFree
     public void clear() {
     }
 
+    @Pure
     public String get(String key) {
         return null;
     }
 
+    @SideEffectFree
     public void put(String key, String val) {
     }
 
+    @SideEffectFree
     public void remove(String key) {
     }
 
+    @Pure
     public Map<String, String> getCopyOfContextMap() {
         return null;
     }
 
+    @SideEffectFree
     public void setContextMap(Map<String, String> contextMap) {
         // NOP
     }

@@ -24,6 +24,8 @@
  */
 
 package org1.slf4j;
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
 
 /**
  * The org1.slf4j.Logger interface is the main user entry point of SLF4J API.
@@ -74,6 +76,7 @@ public interface Logger {
      * Return the name of this <code>Logger</code> instance.
      * @return name of this logger instance 
      */
+    @Pure
     public String getName();
 
     /**
@@ -83,6 +86,7 @@ public interface Logger {
      *         false otherwise.
      * @since 1.4
      */
+    @Impure
     public boolean isTraceEnabled();
 
     /**
@@ -91,6 +95,7 @@ public interface Logger {
      * @param msg the message string to be logged
      * @since 1.4
      */
+    @Impure
     public void trace(String msg);
 
     /**
@@ -104,6 +109,7 @@ public interface Logger {
      * @param arg    the argument
      * @since 1.4
      */
+    @Impure
     public void trace(String format, Object arg);
 
     /**
@@ -118,6 +124,7 @@ public interface Logger {
      * @param arg2   the second argument
      * @since 1.4
      */
+    @Impure
     public void trace(String format, Object arg1, Object arg2);
 
     /**
@@ -134,6 +141,7 @@ public interface Logger {
      * @param arguments a list of 3 or more arguments
      * @since 1.4
      */
+    @Impure
     public void trace(String format, Object... arguments);
 
     /**
@@ -144,6 +152,7 @@ public interface Logger {
      * @param t   the exception (throwable) to log
      * @since 1.4
      */
+    @Impure
     public void trace(String msg, Throwable t);
 
     /**
@@ -156,6 +165,7 @@ public interface Logger {
      *         
      * @since 1.4
      */
+    @Impure
     public boolean isTraceEnabled(Marker marker);
 
     /**
@@ -165,6 +175,7 @@ public interface Logger {
      * @param msg    the message string to be logged
      * @since 1.4
      */
+    @Impure
     public void trace(Marker marker, String msg);
 
     /**
@@ -176,6 +187,7 @@ public interface Logger {
      * @param arg    the argument
      * @since 1.4
      */
+    @Impure
     public void trace(Marker marker, String format, Object arg);
 
     /**
@@ -189,6 +201,7 @@ public interface Logger {
      * @param arg2   the second argument
      * @since 1.4
      */
+    @Impure
     public void trace(Marker marker, String format, Object arg1, Object arg2);
 
     /**
@@ -201,6 +214,7 @@ public interface Logger {
      * @param argArray an array of arguments
      * @since 1.4
      */
+    @Impure
     public void trace(Marker marker, String format, Object... argArray);
 
     /**
@@ -212,6 +226,7 @@ public interface Logger {
      * @param t      the exception (throwable) to log
      * @since 1.4
      */
+    @Impure
     public void trace(Marker marker, String msg, Throwable t);
 
     /**
@@ -220,6 +235,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the DEBUG level,
      *         false otherwise.
      */
+    @Impure
     public boolean isDebugEnabled();
 
     /**
@@ -227,6 +243,7 @@ public interface Logger {
      *
      * @param msg the message string to be logged
      */
+    @Impure
     public void debug(String msg);
 
     /**
@@ -239,6 +256,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void debug(String format, Object arg);
 
     /**
@@ -252,6 +270,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void debug(String format, Object arg1, Object arg2);
 
     /**
@@ -268,6 +287,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void debug(String format, Object... arguments);
 
     /**
@@ -277,6 +297,7 @@ public interface Logger {
      * @param msg the message accompanying the exception
      * @param t   the exception (throwable) to log
      */
+    @Impure
     public void debug(String msg, Throwable t);
 
     /**
@@ -287,6 +308,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the DEBUG level,
      *         false otherwise. 
      */
+    @Impure
     public boolean isDebugEnabled(Marker marker);
 
     /**
@@ -295,6 +317,7 @@ public interface Logger {
      * @param marker the marker data specific to this log statement
      * @param msg    the message string to be logged
      */
+    @Impure
     public void debug(Marker marker, String msg);
 
     /**
@@ -305,6 +328,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void debug(Marker marker, String format, Object arg);
 
     /**
@@ -317,6 +341,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void debug(Marker marker, String format, Object arg1, Object arg2);
 
     /**
@@ -328,6 +353,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void debug(Marker marker, String format, Object... arguments);
 
     /**
@@ -338,6 +364,7 @@ public interface Logger {
      * @param msg    the message accompanying the exception
      * @param t      the exception (throwable) to log
      */
+    @Impure
     public void debug(Marker marker, String msg, Throwable t);
 
     /**
@@ -346,6 +373,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the INFO level,
      *         false otherwise.
      */
+    @Impure
     public boolean isInfoEnabled();
 
     /**
@@ -353,6 +381,7 @@ public interface Logger {
      *
      * @param msg the message string to be logged
      */
+    @Impure
     public void info(String msg);
 
     /**
@@ -365,6 +394,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void info(String format, Object arg);
 
     /**
@@ -378,6 +408,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void info(String format, Object arg1, Object arg2);
 
     /**
@@ -394,6 +425,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void info(String format, Object... arguments);
 
     /**
@@ -403,6 +435,7 @@ public interface Logger {
      * @param msg the message accompanying the exception
      * @param t   the exception (throwable) to log
      */
+    @Impure
     public void info(String msg, Throwable t);
 
     /**
@@ -412,6 +445,7 @@ public interface Logger {
      * @param marker The marker data to take into consideration
      * @return true if this logger is warn enabled, false otherwise 
      */
+    @Impure
     public boolean isInfoEnabled(Marker marker);
 
     /**
@@ -420,6 +454,7 @@ public interface Logger {
      * @param marker The marker specific to this log statement
      * @param msg    the message string to be logged
      */
+    @Impure
     public void info(Marker marker, String msg);
 
     /**
@@ -430,6 +465,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void info(Marker marker, String format, Object arg);
 
     /**
@@ -442,6 +478,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void info(Marker marker, String format, Object arg1, Object arg2);
 
     /**
@@ -453,6 +490,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void info(Marker marker, String format, Object... arguments);
 
     /**
@@ -463,6 +501,7 @@ public interface Logger {
      * @param msg    the message accompanying the exception
      * @param t      the exception (throwable) to log
      */
+    @Impure
     public void info(Marker marker, String msg, Throwable t);
 
     /**
@@ -471,6 +510,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the WARN level,
      *         false otherwise.
      */
+    @Impure
     public boolean isWarnEnabled();
 
     /**
@@ -478,6 +518,7 @@ public interface Logger {
      *
      * @param msg the message string to be logged
      */
+    @Impure
     public void warn(String msg);
 
     /**
@@ -490,6 +531,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void warn(String format, Object arg);
 
     /**
@@ -506,6 +548,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void warn(String format, Object... arguments);
 
     /**
@@ -519,6 +562,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void warn(String format, Object arg1, Object arg2);
 
     /**
@@ -528,6 +572,7 @@ public interface Logger {
      * @param msg the message accompanying the exception
      * @param t   the exception (throwable) to log
      */
+    @Impure
     public void warn(String msg, Throwable t);
 
     /**
@@ -538,6 +583,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the WARN level,
      *         false otherwise.
      */
+    @Impure
     public boolean isWarnEnabled(Marker marker);
 
     /**
@@ -546,6 +592,7 @@ public interface Logger {
      * @param marker The marker specific to this log statement
      * @param msg    the message string to be logged
      */
+    @Impure
     public void warn(Marker marker, String msg);
 
     /**
@@ -556,6 +603,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void warn(Marker marker, String format, Object arg);
 
     /**
@@ -568,6 +616,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void warn(Marker marker, String format, Object arg1, Object arg2);
 
     /**
@@ -579,6 +628,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void warn(Marker marker, String format, Object... arguments);
 
     /**
@@ -589,6 +639,7 @@ public interface Logger {
      * @param msg    the message accompanying the exception
      * @param t      the exception (throwable) to log
      */
+    @Impure
     public void warn(Marker marker, String msg, Throwable t);
 
     /**
@@ -597,6 +648,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the ERROR level,
      *         false otherwise.
      */
+    @Impure
     public boolean isErrorEnabled();
 
     /**
@@ -604,6 +656,7 @@ public interface Logger {
      *
      * @param msg the message string to be logged
      */
+    @Impure
     public void error(String msg);
 
     /**
@@ -616,6 +669,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void error(String format, Object arg);
 
     /**
@@ -629,6 +683,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void error(String format, Object arg1, Object arg2);
 
     /**
@@ -645,6 +700,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void error(String format, Object... arguments);
 
     /**
@@ -654,6 +710,7 @@ public interface Logger {
      * @param msg the message accompanying the exception
      * @param t   the exception (throwable) to log
      */
+    @Impure
     public void error(String msg, Throwable t);
 
     /**
@@ -664,6 +721,7 @@ public interface Logger {
      * @return True if this Logger is enabled for the ERROR level,
      *         false otherwise.
      */
+    @Impure
     public boolean isErrorEnabled(Marker marker);
 
     /**
@@ -672,6 +730,7 @@ public interface Logger {
      * @param marker The marker specific to this log statement
      * @param msg    the message string to be logged
      */
+    @Impure
     public void error(Marker marker, String msg);
 
     /**
@@ -682,6 +741,7 @@ public interface Logger {
      * @param format the format string
      * @param arg    the argument
      */
+    @Impure
     public void error(Marker marker, String format, Object arg);
 
     /**
@@ -694,6 +754,7 @@ public interface Logger {
      * @param arg1   the first argument
      * @param arg2   the second argument
      */
+    @Impure
     public void error(Marker marker, String format, Object arg1, Object arg2);
 
     /**
@@ -705,6 +766,7 @@ public interface Logger {
      * @param format    the format string
      * @param arguments a list of 3 or more arguments
      */
+    @Impure
     public void error(Marker marker, String format, Object... arguments);
 
     /**
@@ -716,6 +778,7 @@ public interface Logger {
      * @param msg    the message accompanying the exception
      * @param t      the exception (throwable) to log
      */
+    @Impure
     public void error(Marker marker, String msg, Throwable t);
 
 }

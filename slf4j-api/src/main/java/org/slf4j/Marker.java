@@ -24,6 +24,9 @@
  */
 package org1.slf4j;
 
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import java.io.Serializable;
 import java.util.Iterator;
 
@@ -56,6 +59,7 @@ public interface Marker extends Serializable {
      * 
      * @return name of marker
      */
+    @Pure
     public String getName();
 
     /**
@@ -66,6 +70,7 @@ public interface Marker extends Serializable {
      * @throws IllegalArgumentException
      *                 if 'reference' is null
      */
+    @Impure
     public void add(Marker reference);
 
     /**
@@ -75,11 +80,14 @@ public interface Marker extends Serializable {
      *                the marker reference to remove
      * @return true if reference could be found and removed, false otherwise.
      */
+    @Impure
     public boolean remove(Marker reference);
 
     /**
      * @deprecated Replaced by {@link #hasReferences()}.
      */
+    @Pure
+    @Impure
     public boolean hasChildren();
 
     /**
@@ -87,6 +95,7 @@ public interface Marker extends Serializable {
      * 
      * @return true if this marker has one or more references, false otherwise.
      */
+    @Pure
     public boolean hasReferences();
 
     /**
@@ -95,6 +104,7 @@ public interface Marker extends Serializable {
      * 
      * @return Iterator over the references of this marker
      */
+    @SideEffectFree
     public Iterator<Marker> iterator();
 
     /**
@@ -108,6 +118,7 @@ public interface Marker extends Serializable {
      *                 if 'other' is null
      * @return Whether this marker contains the other marker.
      */
+    @Impure
     public boolean contains(Marker other);
 
     /**
@@ -118,6 +129,7 @@ public interface Marker extends Serializable {
      * @param name The marker name to test for inclusion.
      * @return Whether this marker contains the other marker.
      */
+    @Impure
     public boolean contains(String name);
 
     /**
@@ -128,6 +140,8 @@ public interface Marker extends Serializable {
      *
      * @since 1.5.1
      */
+    @Pure
+    @Impure
     public boolean equals(Object o);
 
     /**
@@ -137,6 +151,7 @@ public interface Marker extends Serializable {
      * @return the computed hashCode
      * @since 1.5.1
      */
+    @Pure
     public int hashCode();
 
 }

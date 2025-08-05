@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.spi.MDCAdapter;
 
 import java.util.*;
@@ -45,6 +47,7 @@ public class BasicMDCAdapter implements MDCAdapter {
 
     private InheritableThreadLocal<Map<String, String>> inheritableThreadLocal = new InheritableThreadLocal<Map<String, String>>();
 
+    @SideEffectFree
     static boolean isJDK14() {
         try {
             String javaVersion = System.getProperty("java.version");
@@ -69,6 +72,7 @@ public class BasicMDCAdapter implements MDCAdapter {
      * @throws IllegalArgumentException
      *                 in case the "key" parameter is null
      */
+    @Impure
     public void put(String key, String val) {
         if (key == null) {
             throw new IllegalArgumentException("key cannot be null");
@@ -84,6 +88,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     /**
      * Get the context identified by the <code>key</code> parameter.
      */
+    @Impure
     public String get(String key) {
         Map<String, String> Map = (Map<String, String>) inheritableThreadLocal.get();
         if ((Map != null) && (key != null)) {
@@ -96,6 +101,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     /**
      * Remove the the context identified by the <code>key</code> parameter.
      */
+    @Impure
     public void remove(String key) {
         Map<String, String> map = (Map<String, String>) inheritableThreadLocal.get();
         if (map != null) {
@@ -106,6 +112,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     /**
      * Clear all entries in the MDC.
      */
+    @Impure
     public void clear() {
         Map<String, String> map = (Map<String, String>) inheritableThreadLocal.get();
         if (map != null) {
@@ -126,6 +133,7 @@ public class BasicMDCAdapter implements MDCAdapter {
      * 
      * @return the keys in the MDC
      */
+    @Impure
     public Set<String> getKeys() {
         Map<String, String> map = (Map<String, String>) inheritableThreadLocal.get();
         if (map != null) {
@@ -140,6 +148,7 @@ public class BasicMDCAdapter implements MDCAdapter {
      * Returned value may be null.
      * 
      */
+    @Impure
     public Map<String, String> getCopyOfContextMap() {
         Map<String, String> oldMap = (Map<String, String>) inheritableThreadLocal.get();
         if (oldMap != null) {
@@ -153,6 +162,7 @@ public class BasicMDCAdapter implements MDCAdapter {
         }
     }
 
+    @Impure
     public void setContextMap(Map<String, String> contextMap) {
         Map<String, String> map = Collections.<String, String> synchronizedMap(new HashMap<String, String>(contextMap));
         inheritableThreadLocal.set(map);

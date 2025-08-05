@@ -24,6 +24,9 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.SideEffectFree;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.Impure;
 import org1.slf4j.Logger;
 import org1.slf4j.helpers.MarkerIgnoringBase;
 
@@ -45,12 +48,14 @@ public class NOPLogger extends MarkerIgnoringBase {
      * There is no point in creating multiple instances of NOPLOgger, 
      * except by derived classes, hence the protected  access for the constructor.
      */
+    @Impure
     protected NOPLogger() {
     }
 
     /**
      * Always returns the string value "NOP".
      */
+    @Pure
     public String getName() {
         return "NOP";
     }
@@ -59,31 +64,37 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Pure
     final public boolean isTraceEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void trace(String msg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     final public void trace(String format, Object arg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void trace(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void trace(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void trace(String msg, Throwable t) {
         // NOP
     }
@@ -92,31 +103,37 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Pure
     final public boolean isDebugEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void debug(String msg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     final public void debug(String format, Object arg) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void debug(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void debug(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void debug(String msg, Throwable t) {
         // NOP
     }
@@ -125,32 +142,38 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Pure
     final public boolean isInfoEnabled() {
         // NOP
         return false;
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void info(String msg) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void info(String format, Object arg1) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void info(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void info(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void info(String msg, Throwable t) {
         // NOP
     }
@@ -159,61 +182,73 @@ public class NOPLogger extends MarkerIgnoringBase {
      * Always returns false.
      * @return always false
      */
+    @Pure
     final public boolean isWarnEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void warn(String msg) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void warn(String format, Object arg1) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void warn(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void warn(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void warn(String msg, Throwable t) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @Pure
     final public boolean isErrorEnabled() {
         return false;
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void error(String msg) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void error(String format, Object arg1) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void error(String format, Object arg1, Object arg2) {
         // NOP
     }
 
     /** A NOP implementation.  */
+    @SideEffectFree
     public final void error(String format, Object... argArray) {
         // NOP
     }
 
     /** A NOP implementation. */
+    @SideEffectFree
     final public void error(String msg, Throwable t) {
         // NOP
     }

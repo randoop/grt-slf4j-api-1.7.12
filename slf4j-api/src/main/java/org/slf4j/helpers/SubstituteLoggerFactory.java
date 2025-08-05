@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import org1.slf4j.ILoggerFactory;
 import org1.slf4j.Logger;
 
@@ -42,6 +44,7 @@ public class SubstituteLoggerFactory implements ILoggerFactory {
 
     final ConcurrentMap<String, SubstituteLogger> loggers = new ConcurrentHashMap<String, SubstituteLogger>();
 
+    @Impure
     public Logger getLogger(String name) {
         SubstituteLogger logger = loggers.get(name);
         if (logger == null) {
@@ -53,14 +56,17 @@ public class SubstituteLoggerFactory implements ILoggerFactory {
         return logger;
     }
 
+    @SideEffectFree
     public List<String> getLoggerNames() {
         return new ArrayList<String>(loggers.keySet());
     }
 
+    @SideEffectFree
     public List<SubstituteLogger> getLoggers() {
         return new ArrayList<SubstituteLogger>(loggers.values());
     }
 
+    @Impure
     public void clear() {
         loggers.clear();
     }

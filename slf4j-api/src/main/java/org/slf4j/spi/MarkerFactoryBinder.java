@@ -24,6 +24,7 @@
  */
 package org1.slf4j.spi;
 
+import org.checkerframework.dataflow.qual.Pure;
 import org1.slf4j.IMarkerFactory;
 
 /**
@@ -41,6 +42,7 @@ public interface MarkerFactoryBinder {
      * @return the instance of {@link IMarkerFactory} that 
      * {@link org1.slf4j.MarkerFactory} class should bind to.
      */
+    @Pure
     public IMarkerFactory getMarkerFactory();
 
     /**
@@ -53,5 +55,6 @@ public interface MarkerFactoryBinder {
      * 
      * @return the class name of the intended {@link IMarkerFactory} instance
      */
+    @Pure
     public String getMarkerFactoryClassStr();
 }

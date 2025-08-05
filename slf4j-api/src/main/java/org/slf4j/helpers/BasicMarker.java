@@ -24,6 +24,9 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -44,6 +47,7 @@ public class BasicMarker implements Marker {
     private final String name;
     private List<Marker> referenceList;
 
+    @SideEffectFree
     BasicMarker(String name) {
         if (name == null) {
             throw new IllegalArgumentException("A marker name cannot be null");
@@ -51,10 +55,12 @@ public class BasicMarker implements Marker {
         this.name = name;
     }
 
+    @Pure
     public String getName() {
         return name;
     }
 
+    @Impure
     public synchronized void add(Marker reference) {
         if (reference == null) {
             throw new IllegalArgumentException("A null value cannot be added to a Marker as reference.");
@@ -77,14 +83,18 @@ public class BasicMarker implements Marker {
 
     }
 
+    @Pure
     public synchronized boolean hasReferences() {
         return ((referenceList != null) && (referenceList.size() > 0));
     }
 
+    @Pure
+    @Impure
     public boolean hasChildren() {
         return hasReferences();
     }
 
+    @SideEffectFree
     public synchronized Iterator<Marker> iterator() {
         if (referenceList != null) {
             return referenceList.iterator();
@@ -94,6 +104,7 @@ public class BasicMarker implements Marker {
         }
     }
 
+    @Impure
     public synchronized boolean remove(Marker referenceToRemove) {
         if (referenceList == null) {
             return false;
@@ -110,6 +121,7 @@ public class BasicMarker implements Marker {
         return false;
     }
 
+    @Impure
     public boolean contains(Marker other) {
         if (other == null) {
             throw new IllegalArgumentException("Other cannot be null");
@@ -133,6 +145,7 @@ public class BasicMarker implements Marker {
     /**
      * This method is mainly used with Expression Evaluators.
      */
+    @Impure
     public boolean contains(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Other cannot be null");
@@ -157,6 +170,8 @@ public class BasicMarker implements Marker {
     private static String CLOSE = " ]";
     private static String SEP = ", ";
 
+    @Pure
+    @Impure
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -169,10 +184,12 @@ public class BasicMarker implements Marker {
         return name.equals(other.getName());
     }
 
+    @Pure
     public int hashCode() {
         return name.hashCode();
     }
 
+    @Impure
     public String toString() {
         if (!this.hasReferences()) {
             return this.getName();

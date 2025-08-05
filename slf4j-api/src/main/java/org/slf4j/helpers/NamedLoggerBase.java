@@ -24,6 +24,8 @@
  */
 package org1.slf4j.helpers;
 
+import org.checkerframework.dataflow.qual.Impure;
+import org.checkerframework.dataflow.qual.Pure;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
@@ -43,6 +45,7 @@ abstract class NamedLoggerBase implements Logger, Serializable {
 
     protected String name;
 
+    @Pure
     public String getName() {
         return name;
     }
@@ -61,6 +64,7 @@ abstract class NamedLoggerBase implements Logger, Serializable {
      * @return logger with same name as returned by LoggerFactory
      * @throws ObjectStreamException
      */
+    @Impure
     protected Object readResolve() throws ObjectStreamException {
         // using getName() instead of this.name works even for
         // NOPLogger
