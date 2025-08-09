@@ -87,10 +87,10 @@
           </execution>
         </executions>
         <configuration>
-          <tasks>
+          <target>
             <echo>Removing slf4j-api's dummy StaticLoggerBinder and StaticMarkerBinder</echo>
-            <delete dir="target/classes/org/slf4j/impl"/>
-          </tasks>
+            <delete dir="target/classes/org1/slf4j/impl"/>
+          </target>
         </configuration>
       </plugin>
 

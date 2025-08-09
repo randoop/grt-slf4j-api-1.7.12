@@ -74,13 +74,22 @@
           </execution>
         </executions>
         <configuration>
-          <tasks>
+          <target>
             <echo>Removing slf4j-api's dummy StaticLoggerBinder and StaticMarkerBinder</echo>
-            <delete dir="target/classes/org/slf4j/impl"/>
-          </tasks>
+            <delete dir="target/classes/org1/slf4j/impl"/>
+          </target>
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <testExcludes>
+            <exclude>**/*</exclude>
+          </testExcludes>
+        </configuration>
+      </plugin>
     </plugins>
 
   </build>
